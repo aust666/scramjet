@@ -3,261 +3,159 @@
 <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 <title>Tire-UB</title>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TireUnblocker can help you get through internet filters and bypass them to search the web privately. Enjoy features such as Advanced Tab Cloaking, Advanced About:Blank Cloaking (prevents sites from showing in browser history), an extremely clean UI, fast speeds and response times,  and access to tons of apps and games.">
-    <meta name="keywords" content="TireUnblocker, internet filters, bypass filters, web privacy, tab cloaking, clean UI, fast speeds, apps, games">
-    <meta name="author" content="TireUnblocker Team">
-    <meta property="og:title" content="TireUnblocker">
-    <meta property="og:description" content="TireUnblocker can help you get through internet filters and bypass them to search the web privately. Enjoy features such as Advanced Tab Cloaking, Advanced About:Blank Cloaking (prevents sites from showing in browser history), an extremely clean UI, fast speeds and response times, and access to tons of apps and games.">
-    <meta property="og:image" content="/img/UB.png">
-    <meta property="og:url" content="https://t.lema.cl">
-  
-    <meta name="twitter:title" content="TireUnblocker">
-    <meta name="twitter:description" content="TireUnblocker can help you get through internet filters and bypass them to search the web privately. Enjoy features such as Advanced Tab Cloaking, Advanced About:Blank Cloaking (prevents sites from showing in browser history), an extremely clean UI, fast speeds and response times, and access to tons of apps and games.">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TireUnblocker can help you get through internet filters and bypass them to search the web privately.">
+<meta name="keywords" content="TireUnblocker, bypass filters, web privacy">
+<meta name="author" content="TireUnblocker Team">
+
 <script src="/scram/scramjet.all.js"></script>
-		<script src="/baremux/index.js"></script>
-		
-		<link rel="stylesheet" href="index.css" />
-		<script src="register-sw.js" defer></script>
-		<script src="search.js" defer></script>
-		<script src="index.js" defer></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QDSM46GQ19"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<script src="/baremux/index.js"></script>
 
-  gtag('config', 'G-QDSM46GQ19');
-</script>
-<script>
-let bareReady = false;
-
-window.addEventListener("load", () => {
-    fetch("/scramjet/about:blank").then(() => {
-        console.log("BareClient initialized");
-        bareReady = true;
-    }).catch(() => {
-        console.log("BareClient initialization failed");
-        bareReady = false;
-    });
-});
-
-function loadScramjetURL(url) {
-    if (!bareReady) {
-        // wait 100ms and retry until BareMux is ready
-        setTimeout(() => loadScramjetURL(url), 100);
-        return;
-    }
-    frame.src = `/scramjet/${url}`;
-}
-</script>
-
-</script>
+<link rel="stylesheet" href="index.css">
+<script src="register-sw.js" defer></script>
+<script src="search.js" defer></script>
+<script src="index.js" defer></script>
 
 <style>
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: "Pixelify Sans", sans-serif;
+}
+
 #container {
-    position: relative;
-    width: 100%;
-    height: 100%; /* Set the height to fill the entire page */
-    background-color: transparent; /* Set initial background color */
-    transition: background-color 0.5s ease; /* Smooth transition for background color change */
+  position: relative;
+  width: 100vw;
+  height: 100vh;
 }
 
 #frame {
-    border: 0px solid black;
-    z-index: 1;
-}
-        .sidebar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 250px; /* Adjust the width of the sidebar */
-    height: 100%; /* Full height */
-    position: fixed;
-    top: 0;
-    left: -250px; /* Initially off-screen */
-    background-color: black;
-    box-shadow: 0 6px 2px -2px white;
-    transition: left 0.5s ease; /* Smooth animation for opening/closing */
-    z-index: 2; /* Ensure the sidebar overlaps other content */
-    background-image: url('/img/bg.png'); /* for the particles */
-}
-    body {
-        overflow: hidden;
-        margin: 0;
-        padding: 0;
-        font-family: "Pixelify Sans", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
-    }
-        .nav-item {
-            cursor: pointer !important;
-        }
-
-        .nav-item a {
-            display: block;
-            color: white;
-            transition: all 1s;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        font-family: "Pixelify Sans", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
-        }
-
-        .nav-item a:hover {
-            background-color: #444;
-        }
-
-        
-        #fsbutton {
-            position: absolute;
-            background-color: #333;
-            width: 40px; /* Adjust button size */
-            height: 40px; /* Adjust button size */
-            cursor: pointer !important;
-            z-index: 3;
-            top: 10px; /* Adjust top position as needed */
-            left: 10px; /* Adjust left position as needed */
-            border-radius: 50%; /* Make it circular */
-            border: 2px solid white;
-            box-shadow: 0 6px 2px -2px white;
-            color: white;
-        }
-    .nav-item form {
-    margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+  z-index: 1;
 }
 
-        /* Transparent black fade effect when sidebar is open */
-        .blurred {
-            filter: brightness(70%) blur(5px); /* Adjust brightness and blur intensity */
-        }
+.sidebar {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  background: black;
+  transition: left 0.5s ease;
+  z-index: 2;
+}
 
-        /* Transparent black background when sidebar is open */
-        #container.sidebar-open {
-            background-color: rgba(0, 0, 0, 0.8); /* Adjust transparency */
-        }
-    </style>
+.nav-item a {
+  display: block;
+  color: white;
+  padding: 14px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-item a:hover {
+  background: #444;
+}
+
+#fsbutton {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+  z-index: 3;
+  border-radius: 50%;
+  border: 2px solid white;
+  background: #333;
+  color: white;
+  cursor: pointer;
+}
+
+.blurred {
+  filter: brightness(70%) blur(5px);
+}
+</style>
+
 <div id="container">
-   <div id="container">
-   <div id="container">
-    <div id="container">
-        <ul class="sidebar" id="sidebar">
-            <li class="nav-item"><a onclick="home();">Home</a></li>
-            <li class="nav-item"><a onclick="games();">Games</a></li>
-            <li class="nav-item"><a onclick="apps();">Apps</a></li>
-          <li class="nav-item">
- 		<form id="sj-form" class="flex-center">
-			<input
-				id="sj-search-engine"
-				value="https://duckduckgo.com/?q=%s"
-				type="hidden"
-			/>
-			<input id="sj-address" type="text" placeholder="Search the web freely" class="form__input" />
-		</form>
+  <ul class="sidebar" id="sidebar">
+    <li class="nav-item"><a onclick="home()">Home</a></li>
+    <li class="nav-item"><a onclick="games()">Games</a></li>
+    <li class="nav-item"><a onclick="apps()">Apps</a></li>
+    
     </li>
-        </ul>
-    </div>
-    <button id="fsbutton" onclick="toggleSidebar()">☰</button>
-    <iframe id="frame" src="home.html" style="position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; border: none; overflow: hidden;"></iframe>
+  </ul>
+
+  <button id="fsbutton" onclick="toggleSidebar()">☰</button>
+
+  <iframe id="frame" src="home.html"></iframe>
 </div>
+
 <script>
-    var frame = document.getElementById('frame');
+var frame = document.getElementById("frame");
 
-    function home() {
-        frame.src = "/home.html";
-    }
-        function music() {
-        frame.src = "https://tiremusic.audiopro.mx";
-    }
+function clearSearchIframes() {
+  document.querySelectorAll("iframe").forEach((iframe) => {
+    if (iframe.id !== "frame") iframe.remove();
+  });
+}
 
-    function games() {
-        loadScramjetURL("https://truffled.lol/g");
-    }
-    function lg() {
-        frame.src = "linkgen";
-    }
+function home() {
+  clearSearchIframes();
+  frame.src = "/home.html";
+}
 
-    function ab() {
-        var win = window.open('about:blank');
-        win.document.title = "Classes";
-        var favicon = win.document.createElement('link');
-        favicon.rel = 'icon';
-        favicon.type = 'image/webp';
-        favicon.href = 'https://raw.githubusercontent.com/DogeNetwork/v4/main/static/assets/img/classroom-icon.webp';
-        win.document.head.appendChild(favicon);
-        var url = "index.html";
-        var iframe = win.document.createElement('iframe');
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
-        iframe.style.border = "none";
-        iframe.src = url;
-        win.document.body.appendChild(iframe);
-    }
-       function mv() {
-        frame.src = "/movies.html";
-    }
+function games() {
+  clearSearchIframes();
+  loadScramjetURL("https://truffled.lol/g");
+}
+
 function apps() {
-       loadScramjetURL("https://truffled.lol/a");
-    }
-    function toggleSidebar() {
-        var sidebar = document.getElementById('sidebar');
-        sidebar.classList.toggle('active');
-    }
-</script>
-  
+  clearSearchIframes();
+  loadScramjetURL("https://truffled.lol/a");
+}
 
-<script>
-    function toggleSidebar() {
-        var container = document.getElementById('container');
-        var sidebar = document.getElementById('sidebar');
-        var frame = document.getElementById('frame');
-        var button = document.getElementById('fsbutton');
-        if (sidebar.style.left === '-250px') {
-            sidebar.style.left = '0'; // Open sidebar
-            frame.style.width = 'calc(100% - 250px)'; // Adjust frame width
-            frame.style.left = '250px'; // Shift frame to accommodate sidebar
-            frame.style.height = '100vh'; // Set frame height to fill the entire viewport
-            frame.classList.add('blurred'); // Apply blur effect
-            container.classList.add('sidebar-open'); // Apply transparent black background
-            button.innerHTML = '✕'; // Change button icon
-        } else {
-            sidebar.style.left = '-250px'; // Close sidebar
-            frame.style.width = '100%'; // Reset frame width
-            frame.style.left = '0'; // Reset frame position
-            frame.style.height = '100vh'; // Reset frame height to fill the entire viewport
-            frame.classList.remove('blurred'); // Remove blur effect
-            container.classList.remove('sidebar-open'); // Remove transparent black background
-            button.innerHTML = '☰'; // Change button icon back
-        }
-    }
+function toggleSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  const button = document.getElementById("fsbutton");
+
+  if (sidebar.style.left === "0px") {
+    sidebar.style.left = "-250px";
+    frame.style.left = "0";
+    frame.style.width = "100vw";
+    frame.classList.remove("blurred");
+    button.textContent = "☰";
+  } else {
+    sidebar.style.left = "0";
+    frame.style.left = "250px";
+    frame.style.width = "calc(100vw - 250px)";
+    frame.classList.add("blurred");
+    button.textContent = "✕";
+  }
+}
+
+let bareReady = false;
+window.addEventListener("load", () => {
+  fetch("/scramjet/about:blank")
+    .then(() => bareReady = true)
+    .catch(() => bareReady = false);
+});
+
+function loadScramjetURL(url) {
+  if (!bareReady) {
+    setTimeout(() => loadScramjetURL(url), 100);
+    return;
+  }
+  frame.src = `/scramjet/${url}`;
+}
 </script>
-<script>
-    document.addEventListener('keydown', function(event) {
-        // Check if the key pressed is "2" followed by "9"
-        if (event.key === '2' && event.ctrlKey || event.key === '9') {
-            // Redirect to Google
-            window.location.href = 'https://duckduckgo.com/';
-        }
-    });
-</script>
-        <script>
-    window.onload = function() {
-      // Detect if the user is using an iPhone or an Android phone
-      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      if (/android/i.test(userAgent) || (/iPhone|iPod/.test(userAgent) && !window.MSStream)) {
-        // Zoom in if the user is on an iPhone or Android phone
-        document.body.style.zoom = "150%";
-      }
-    };
-  </script>
+ 

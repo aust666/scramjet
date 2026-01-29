@@ -30,3 +30,23 @@ function search(input, template) {
 	// Treat the input as a search query
 	return template.replace("%s", encodeURIComponent(input));
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("sj-form");
+  const input = document.getElementById("sj-address");
+  const engine = document.getElementById("sj-search-engine");
+
+  if (!form || !input || !engine) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const query = input.value.trim();
+    if (!query) return;
+
+    const url = search(query, engine.value);
+
+    // ✅ THIS replaces home.html instead of overlapping it
+    loadScramjetURL(url);
+  });
+});
